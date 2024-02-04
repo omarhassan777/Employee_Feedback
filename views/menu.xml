@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Items -->
+    <menuitem id="menu_feedback_root" name="Feedback" sequence="10"/>
+
+    <menuitem id="menu_feedback_operations" name="Operations" parent="menu_feedback_root" action="action_menu_employee_feedback" sequence="20"/>
+    
+    <menuitem id="menu_feedback_operations2" name="Operations" parent="menu_feedback_operations" action="action_menu_employee_feedback" sequence="30"/>
+</odoo>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <!-- Menu Action -->
+    <record id="action_menu_employee_feedback" model="ir.actions.act_window">
+        <field name="name">Employee Feedback</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.feedback</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Views -->
+    <record id="view_employee_feedback_form" model="ir.ui.view">
+        <field name="name">employee.feedback.form</field>
+        <field name="model">employee.feedback</field>
+        <field name="arch" type="xml">
+            <form>
+             <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="employee_name" readonly="1"/>
+                            <field name="work_phone" readonly="1"/>
+                            <field name="work_email" readonly="1"/>
+                            <field name="department" readonly="1"/>
+                            <field name="date" widget="date"/>
+                            <field name="feedback_type"/>
+                            <field name="image" widget="image"/>
+                            
+
+                        </group>
+                        <group>
+                            <field name="question_1" attrs="{'invisible': [('feedback_type', '!=', '1')]}"/>
+                            <field name="question_2" attrs="{'invisible': [('feedback_type', '!=', '1')]}"/>
+                            <field name="question_3" attrs="{'invisible': [('feedback_type', '!=', '1')]}"/>
+                            <field name="question_4" attrs="{'invisible': [('feedback_type', '!=', '1')]}"/>
+                            <field name="question_5" attrs="{'invisible': [('feedback_type', '!=', '1')]}"/>
+                            <field name="problem_description" attrs="{'invisible': [('feedback_type', '!=', '2')]}"/>
+                            <button string="Submit" type="object" class="oe_highlight" name="send_whatsapp_message"/>
+                        </group>
+                             <!-- New notebook for feedback and problem history -->
+                      <notebook>
+                            <!-- Feedback History Page -->
+                            <page string="Feedback History">
+                                <field name="feedback_history" widget="html" readonly="1"/>
+                            </page>
+
+                            <!-- Problem History Page -->
+                            <page string="Problem History">
+                                <field name="problem_history" widget="html" readonly="1"/>
+                            </page>
+                       </notebook>
+
+                        <!-- Button to refresh history -->
+                     <button string="Refresh History" type="object" class="oe_highlight" name="refresh_history"/>
+                </group>
+                    
+               </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+               </div>
+               
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_feedback_tree" model="ir.ui.view">
+        <field name="name">employee.feedback.tree</field>
+        <field name="model">employee.feedback</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_name"/>
+                <field name="date"/>
+                <field name="department"/>
+                <field name="feedback_type"/>
+                
+
+            </tree>    
+                   
+               
+           
+        </field>
+    </record>
+    <record id= "view_Feedback_search" model="ir.ui.view">
+          <field name= "name">employee.feedback.search</field>                 
+          <field name="model">employee.feedback</field>
+        <field name="arch" type="xml">
+        
+                    <search> 
+                               <field name="employee_name"  filter_domain="[('employee_name','ilike',self)]"/>
+                               
+                                <filter string="feedback" name="filter_feedback" domain="[('feedback_type','=','1')]"/>
+                                <separator/>
+                                <filter string="problem" name="filter_problem" domain="[('feedback_type','=','2')]"/>
+                                <!-- create a dynamic filter using the context attribute -->
+                               <filter string="Date" name="filter_date" context="{'group_by': 'date'}"/> 
+                    </search> 
+             </field>
+   </record>
+   
+  <!-- <menuitem id="menu_feedback_employees"
+        name="Feedback"
+        parent="menu_feedback_operations"
+        action="action_menu_employee_feedback"
+        sequence="20"/>   -->
+  
+   
+    
+
+</odoo>

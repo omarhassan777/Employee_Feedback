@@ -1,0 +1,13 @@
+<!-- employee_feedback/views/employee_inherited_views.xml -->
+
+<odoo>
+   
+
+     <menuitem id="menu_feedback_operations2"
+        name="Feedback"
+       parent="hr.menu_hr_root"
+        action="action_menu_employee_feedback"
+        sequence="20" 
+    />          
+</odoo>
+  

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <report 
+    id="report_employee_feedback"
+    string="employeefeedback" 
+    model="employee.feedback"
+    report_type="qweb-pdf" 
+    name="Employee_Feedback.report_employeefeedback" 
+    file="Employee_Feedback.report_employeefeedback"
+  />
+</odoo>

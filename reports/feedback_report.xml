@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_employeefeedback">
+     <t t-foreach="docs" t-as="o">
+               <t t-set="current_object" t-value="o"/>
+                <t t-call="web.html_container">
+                    <t t-call="web.external_layout">
+                        
+                            <div class="page">
+                            <t t-if="o.feedback_type == '1'">
+                                <h2>Employee Feedback Report</h2>
+                                <table class="table table-condensed">
+                        
+                                                            <tr>
+                                                                <td>Employee Name:</td>
+                                                                <td><span t-field="o.employee_name"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Date:</td>
+                                                                <td><span t-field="o.date"/></td>
+                                                            </tr>
+                                                            <!-- Add other fields here -->
+                                                        
+                                                                <tr>
+                                                                    <td>Feedback Type:</td>
+                                                                    <td><span t-field="o.feedback_type"/></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Do you have everything you need to do your job?</td>
+                                                                    <td>
+                                                                        <t t-if="o.question_1">
+                                                                            <span>Yes</span>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <span>No</span>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Do you feel your team works well together?</td>
+                                                                    <td>
+                                                                        <t t-if="o.question_2">
+                                                                            <span>Yes</span>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <span>No</span>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Is the financial return rewarding for you?</td>
+                                                                    <td>
+                                                                        <t t-if="o.question_3">
+                                                                            <span>Yes</span>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <span>No</span>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Where would you like to see yourself in the company in the short term and long term?</td>
+                                                                    <td>
+                                                                        <t t-if="o.question_4">
+                                                                            <span><span t-field="o.question_4"/></span>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <span>team leader</span>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Do you have any additional comments or questions?</td>
+                                                                    <td>
+                                                                        <t t-if="o.question_5">
+                                                                            <span><span t-field="o.question_5"/></span>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <span>thank you</span>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                </table>                             
+                                </t>
+                            
+
+                                    <!-- Check feedback_type for 'Problem' -->
+                                    <t t-if="o.feedback_type == '2'">
+                                        <h2>Employee Problem Report</h2>
+                                        <table class="table table-condensed">
+                                                    <tr>
+                                                        <td>Employee Name:</td>
+                                                        <td><span t-field="o.employee_name"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Date:</td>
+                                                        <td><span t-field="o.date"/></td>
+                                                    </tr>
+                                                    <!-- Add other fields here -->
+                                                                
+                                                                    
+
+                                                <tr>
+                                                    <td>Feedback Type:</td>
+                                                    <td><span t-field="o.feedback_type"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Problem Description:</td>
+                                                    <td>
+                                                        <t t-if="o.problem_description">
+                                                            <span><span t-field="o.problem_description"/></span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span>no problems thank you</span>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                        </table>
+                                    </t>
+                            
+                                
+                            </div>
+                        
+                    </t>
+                </t>
+                 
+      </t>  
+    </template>
+</odoo>
